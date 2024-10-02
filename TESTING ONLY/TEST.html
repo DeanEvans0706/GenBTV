@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your TV Channel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Horizon, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        header {
+            background-color: #202020;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ed0776;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 60vh;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+
+        h2 {
+            margin: 20px 0;
+            color: #ed0776;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: none;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .grid-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .info-box {
+            background-color: #ed0776;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .title {
+            font-family: 'Helvetica', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+        }
+
+        .details {
+            font-family: 'Helvetica', sans-serif;
+            font-size: 12px;
+            color: #fff;
+            margin: 5px 0 0;
+        }
+
+        .footer-image:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #202020;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a img {
+            width: 150px;
+            height: 60px;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #000;
+        }
+
+        .lightbox img {
+            height: 50px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        .lightbox input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+        }
+
+        .lightbox button {
+            background-color: #ed0776;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Slider styles */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider-content {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .originals-slider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .originals-item {
+            min-width: 100%; /* Each video fills the slider */
+            position: relative;
+        }
+
+        .title-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ed0776;
+            text-align: center;
+        }
+
+        .arrow {
+            background-color: #ed0776;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .arrow {
+                padding: 5px;
+                font-size: 12px;
+            }
+
+            .info-box {
+                font-size: 14px;
+            }
+
+            h2 {
+                margin-top: 100px; /* Adjust this value for more or less space */
+                /* other existing styles */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="where-to-watch.html">Where To Watch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="video-container" id="video-player">
+        <video id="video" controls muted autoplay></video>
+
+        <script>
+            const video = document.getElementById('video');
+            const hls = new Hls();
+
+            // HLS feed URLs
+            const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal";
+            const genBMoviesUrl = "https://stream.ads.ottera.tv/cl/241002crukc5ks533qrthgsikg/1280x720_3115200_0_f.m3u8?i=475_11954";
+
+            // Function to load HLS feed
+            function loadHLS(url) {
+                if (Hls.isSupported()) {
+                    hls.loadSource(url);
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                        video.play(); // Autoplay the video
+                    });
+
+                    hls.on(Hls.Events.ERROR, function (event, data) {
+                        if (data.fatal) {
+                            switch (data.fatal) {
+                                case Hls.ErrorTypes.NETWORK_ERROR:
+                                    console.error('A network error occurred: ', data);
+                                    break;
+                                case Hls.ErrorTypes.MEDIA_ERROR:
+                                    console.error('Media error occurred: ', data);
+                                    break;
+                                case Hls.ErrorTypes.OTHER_ERROR:
+                                    console.error('An unknown error occurred: ', data);
+                                    break;
+                            }
+                        }
+                    });
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = url;
+                    video.addEventListener('loadedmetadata', function () {
+                        video.play(); // Autoplay for Safari
+                    });
+                } else {
+                    alert('Your browser does not support HLS streaming.');
+                }
+            }
+
+            // Initial load with GenB TV feed
+            loadHLS(genBTVUrl);
+
+            document.getElementById('genb-movies').onclick = function () {
+                loadHLS(genBMoviesUrl); // Load GenB Movies feed
+            };
+
+            // Function to dynamically load TV shows and movies
+            function loadMedia() {
+                const shows = [
+                    { title: "Blood Sweat and Tears", year: "2023", duration: "45 min", image: "Top 10 Documentary/Blood Sweat And Tears.jpg" },
+                    { title: "From Gangs to Glory", year: "2022", duration: "50 min", image: "Top 10 Documentary/From Gangs to Glory.jpg" },
+                    { title: "Caught in the Crossfire", year: "2021", duration: "60 min", image: "Top 10 Documentary/Caught in the Crossfire.jpg" },
+                    { title: "Just Doing My Job", year: "2020", duration: "40 min", image: "Top 10 Documentary/Just Doing My Job.jpg" },
+                    { title: "KATALINA", year: "2019", duration: "55 min", image: "Top 10 Documentary/KATALINA.png" },
+                    { title: "The German Step-Father", year: "2021", duration: "48 min", image: "Top 10 Documentary/The German Step-Father.jpg" },
+                    { title: "NY Hustle", year: "2020", duration: "50 min", image: "Top 10 Documentary/NY Hustle.png" },
+                    { title: "Rap Skool", year: "2020", duration: "50 min", image: "Top 10 Documentary/Rap Skool.png" },
+                ];
+
+                const movies = [
+                    { title: "Dance Battle America", year: "2023", duration: "45 min", image: "Top 10 Movies/Dance Battle America.jpg" },
+                    { title: "hear me move", year: "2021", duration: "60 min", image: "Top 10 Movies/hear me move.jpg" },
+                    { title: "His Sickled Journey", year: "2020", duration: "40 min", image: "Top 10 Movies/His Sickled Journey.jpg" },
+                    { title: "Knuckle City", year: "2019", duration: "55 min", image: "Top 10 Movies/Knuckle City.jpg" },
+                    { title: "Letters of Hope", year: "2021", duration: "48 min", image: "Top 10 Movies/Letters of Hope.jpg" },
+                    { title: "Light in the Dark", year: "2020", duration: "50 min", image: "Top 10 Movies/Light in the Dark.jpg" },
+                    { title: "One Crazy Christmas", year: "2020", duration: "50 min", image: "Top 10 Movies/One Crazy Christmas.jpg" },
+                    { title: "Running Out of Time", year: "2020", duration: "50 min", image: "Top 10 Movies/Running Out of Time.jpg" },
+                ];
+
+                // Insert logic to display shows and movies into the HTML here
+            }
+
+            // Call loadMedia to load the content dynamically
+            loadMedia();
+        </script>
+    </div>
+
+    <div class="container">
+        <button id="genb-tv" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer; margin: 5px;">
+            Load GenB Live
+        </button>
+        <button id="genb-movies" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer; margin: 5px;">
+            Load GenB Movies
+        </button>
+
+        <h2>Latest Originals</h2>
+        <div class="originals-slider">
+            <button class="arrow left" onclick="moveSlider(-1)">&#10094;</button>
+            <div class="slider" id="slider">
+                <div class="slider-content" id="slider-content">
+                    <div class="originals-item">
+                        <video controls src="video1.mp4"></video>
+                        <div class="title-overlay">Original Title 1</div>
+                    </div>
+                    <div class="originals-item">
+                        <video controls src="video2.mp4"></video>
+                        <div class="title-overlay">Original Title 2</div>
+                    </div>
+                    <div class="originals-item">
+                        <video controls src="video3.mp4"></video>
+                        <div class="title-overlay">Original Title 3</div>
+                    </div>
+                </div>
+            </div>
+            <button class="arrow right" onclick="moveSlider(1)">&#10095;</button>
+        </div>
+
+        <h2>Highlights</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="highlight1.jpg" alt="Highlight 1">
+                <div class="info-box">
+                    <p class="title">Highlight Title 1</p>
+                    <p class="details">Details about highlight 1</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="highlight2.jpg" alt="Highlight 2">
+                <div class="info-box">
+                    <p class="title">Highlight Title 2</p>
+                    <p class="details">Details about highlight 2</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="highlight3.jpg" alt="Highlight 3">
+                <div class="info-box">
+                    <p class="title">Highlight Title 3</p>
+                    <p class="details">Details about highlight 3</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Popular Shows</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="show1.jpg" alt="Show 1">
+                <div class="info-box">
+                    <p class="title">Show Title 1</p>
+                    <p class="details">Details about show 1</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="show2.jpg" alt="Show 2">
+                <div class="info-box">
+                    <p class="title">Show Title 2</p>
+                    <p class="details">Details about show 2</p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="show3.jpg" alt="Show 3">
+                <div class="info-box">
+                    <p class="title">Show Title 3</p>
+                    <p class="details">Details about show 3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <a href="https://www.youtube.com/channel/your-channel"><img src="youtube-icon.png" alt="YouTube"></a>
+            <a href="https://www.instagram.com/your-channel"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/your-channel"><img src="facebook-icon.png" alt="Facebook"></a>
+        </div>
+        <p>&copy; 2024 Your TV Channel. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const sliderContent = document.getElementById('slider-content');
+        const totalSlides = sliderContent.children.length;
+
+        function moveSlider(direction) {
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1; // Wrap to last slide
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0; // Wrap to first slide
+            }
+
+            const slideWidth = sliderContent.children[0].clientWidth;
+            sliderContent.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+    </script>
+</body>
+
+</html>

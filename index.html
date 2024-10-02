@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your TV Channel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Horizon, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        header {
+            background-color: #202020;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ed0776;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 60vh;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+
+        h2 {
+            margin: 20px 0;
+            color: #ed0776;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: none;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .grid-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .info-box {
+            background-color: #ed0776;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .title {
+            font-family: 'Helvetica', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+        }
+
+        .details {
+            font-family: 'Helvetica', sans-serif;
+            font-size: 12px;
+            color: #fff;
+            margin: 5px 0 0;
+        }
+
+.footer-image:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+        
+          /* Footer styles */
+        footer {
+            background-color: #202020;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer a img {
+            width: 150px;
+            height: 60px;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #000;
+        }
+
+        .lightbox img {
+            height: 50px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        .lightbox input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+        }
+
+        .lightbox button {
+            background-color: #ed0776;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Slider styles */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider-content {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .originals-slider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .originals-item {
+            min-width: 100%; /* Each video fills the slider */
+            position: relative;
+        }
+
+        .title-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ed0776;
+            text-align: center;
+        }
+
+        .arrow {
+            background-color: #ed0776;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .arrow {
+                padding: 5px;
+                font-size: 12px;
+            }
+
+            .info-box {
+                font-size: 14px;
+            }
+
+h2 {
+    margin-top: 100px; /* Adjust this value for more or less space */
+    /* other existing styles */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="where-to-watch.html">Where To Watch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="video-container" id="video-player">
+    <video id="video" controls muted autoplay></video>
+
+   <script>
+    const video = document.getElementById('video');
+    const hls = new Hls();
+
+    // HLS feed URLs
+    const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal";
+    const genBMoviesUrl = "https://stream.ads.ottera.tv/cl/241002crukc5ks533qrthgsikg/1280x720_3115200_0_f.m3u8?i=475_11954";
+    
+    // Function to load HLS feed
+    function loadHLS(url) {
+        if (Hls.isSupported()) {
+            hls.loadSource(url);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play(); // Autoplay the video
+            });
+
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                if (data.fatal) {
+                    switch (data.fatal) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            console.error('A network error occurred: ', data);
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            console.error('Media error occurred: ', data);
+                            break;
+                        case Hls.ErrorTypes.OTHER_ERROR:
+                            console.error('An unknown error occurred: ', data);
+                            break;
+                    }
+                }
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = url;
+            video.addEventListener('loadedmetadata', function () {
+                video.play(); // Autoplay for Safari
+            });
+        } else {
+            alert('Your browser does not support HLS streaming.');
+        }
+    }
+
+    // Initial load with GenB TV feed
+    loadHLS(genBTVUrl);
+
+
+    document.getElementById('genb-movies').onclick = function () {
+        loadHLS(genBMoviesUrl); // Load GenB Movies feed
+    };
+</script>
+</div>
+
+
+    <div class="container" id="content">
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="genb-live" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer;">GenB TV Live</button>
+            <button id="genb-movies" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer; margin-left: 10px;">GenB Movies</button>
+        </div>
+
+        <!-- Top TV Shows -->
+        <section>
+            <h2>Top TV Shows</h2>
+            <div class="grid-container" id="tv-shows"></div>
+        </section>
+
+        <!-- Top 10 Movies -->
+        <section>
+            <h2>Top Movies</h2>
+            <div class="grid-container" id="top-movies"></div>
+        </section>
+
+        <!-- GenB TV Originals -->
+<section>
+    <h2>GenB TV Originals</h2>
+    <div class="originals-slider" id="originals-slider">
+        <button class="arrow left" onclick="moveOriginals(-1)">❮</button>
+        <div class="slider">
+            <div class="originals-item">
+                <img src="image1.jpg" alt="Image 1">
+                <div class="title-overlay">The Endz - Series 1</div>
+            </div>
+            <div class="originals-item" style="display: none;">
+                <img src="image2.jpg" alt="Image 2">
+                <div class="title-overlay">Image 2 Title</div>
+            </div>
+            <div class="originals-item" style="display: none;">
+                <img src="image3.jpg" alt="Image 3">
+                <div class="title-overlay">Image 3 Title</div>
+            </div>
+            <!-- Add more originals-item divs for more images -->
+        </div>
+        <button class="arrow right" onclick="moveOriginals(1)">❯</button>
+    </div>
+</section>
+
+    </div>
+
+  <footer>
+        <div>
+            <a href="#"><img src="assets/roku-CvHPq_Zg.svg" class="footer-image" alt="Footer Image 1"></a>
+            <a href="#"><img src="assets/android_tv-BqXq-qO-.svg" class="footer-image" alt="Footer Image 2"></a>
+            <a href="#"><img src="assets/samsung_tv-DKglO2fy%20(1).svg" class="footer-image" alt="Footer Image 3"></a>
+            <a href="#"><img src="assets/apple-DaqcImJZ.svg" class="footer-image" alt="Footer Image 1"></a>
+            <a href="#"><img src="assets/lg_tv-C08nVWWG.svg" class="footer-image" alt="Footer Image 2"></a>
+            <a href="#"><img src="assets/apple_tv-B73yrhVR.svg" class="footer-image" alt="Footer Image 3"></a>
+        </div>
+        <p>&copy; 2024 GenB TV. All rights reserved.</p>
+    </footer>
+
+
+    <!-- Lightbox for Name and Email -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img src="logo.png" alt="Logo">
+            <h2>Welcome! Please Enter Your Details</h2>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        let currentOriginal = 0;
+
+        function moveOriginals(direction) {
+            const originalsItems = document.querySelectorAll('.originals-item');
+            originalsItems[currentOriginal].style.display = 'none';
+            currentOriginal = (currentOriginal + direction + originalsItems.length) % originalsItems.length;
+            originalsItems[currentOriginal].style.display = 'block';
+        }
+
+        // Check if user has submitted their details
+        function checkSubmission() {
+            return localStorage.getItem('userSubmitted') === 'true';
+        }
+
+        function saveToCSV(name, email) {
+            const csvContent = `data:text/csv;charset=utf-8,Name,Email\n${name},${email}`;
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "user_data.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click();
+        }
+
+        // Function to dynamically load TV shows and movies
+        function loadMedia() {
+            const shows = [
+                { title: "Blood Sweat and Tears", year: "2023", duration: "45 min", image: "Top 10 Documentary/Blood Sweat And Tears.jpg" },
+                { title: "From Gangs to Glory", year: "2022", duration: "50 min", image: "Top 10 Documentary/From Gangs to Glory.jpg" },
+                { title: "Caught in the Crossfire", year: "2021", duration: "60 min", image: "Top 10 Documentary/Caught in the Crossfire.jpg" },
+                { title: "Just Doing My Job", year: "2020", duration: "40 min", image: "Top 10 Documentary/Just Doing My Job.jpg" },
+                { title: "KATALINA", year: "2019", duration: "55 min", image: "Top 10 Documentary/KATALINA.png" },
+                { title: "The German Step-Father", year: "2021", duration: "48 min", image: "Top 10 Documentary/The German Step-Father.jpg" },
+                { title: "NY Hustle", year: "2020", duration: "50 min", image: "Top 10 Documentary/NY Hustle.png" },
+                { title: "Rap Skool", year: "2020", duration: "50 min", image: "Top 10 Documentary/Rap Skool.png" },
+            ];
+
+            const movies = [
+                { title: "Dance Battle America", year: "2023", duration: "45 min", image: "Top 10 Movies/Dance Battle America.jpg" },
+                { title: "hear me move", year: "2021", duration: "60 min", image: "Top 10 Movies/hear me move.jpg" },
+                { title: "His Sickled Journey", year: "2020", duration: "40 min", image: "Top 10 Movies/His Sickled Journey.jpg" },
+                { title: "Knuckle City", year: "2019", duration: "55 min", image: "Top 10 Movies/Knuckle City.jpg" },
+                { title: "Letters of Hope", year: "2021", duration: "48 min", image: "Top 10 Movies/Letters of Hope.jpg" },
+                { title: "Light in the Dark", year: "2020", duration: "50 min", image: "Top 10 Movies/Light in the Dark.jpg" },
+                { title: "One Crazy Christmas", year: "2020", duration: "50 min", image: "Top 10 Movies/One Crazy Christmas.jpg" },
+                { title: "Running Out of Time", year: "2020", duration: "50 min", image: "Top 10 Movies/Running Out of Time.jpg" },
+            ];
+
+            const tvShowsContainer = document.getElementById('tv-shows');
+            const moviesContainer = document.getElementById('top-movies');
+
+            shows.forEach(show => {
+                const showDiv = document.createElement('div');
+                showDiv.className = 'grid-item';
+                showDiv.innerHTML = `
+                    <img src="${show.image}" alt="${show.title}">
+                    <div class="info-box">
+                        <p class="title">${show.title}</p>
+                        <p class="details">${show.year} • ${show.duration}</p>
+                    </div>`;
+                tvShowsContainer.appendChild(showDiv);
+            });
+
+            movies.forEach(movie => {
+                const movieDiv = document.createElement('div');
+                movieDiv.className = 'grid-item';
+                movieDiv.innerHTML = `
+                    <img src="${movie.image}" alt="${movie.title}">
+                    <div class="info-box">
+                        <p class="title">${movie.title}</p>
+                        <p class="details">${movie.year} • ${movie.duration}</p>
+                    </div>`;
+                moviesContainer.appendChild(movieDiv);
+            });
+        }
+
+        // Show lightbox if user hasn't submitted details
+        window.onload = function () {
+            if (!checkSubmission()) {
+                document.getElementById('lightbox').style.display = 'flex'; // Show lightbox
+            } else {
+                document.getElementById('content').style.display = 'block'; // Show content
+                loadMedia();
+            }
+        };
+
+        // Handle form submission
+        document.getElementById('submit').onclick = function () {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            if (name && email) {
+                localStorage.setItem('userSubmitted', 'true'); // Mark user as submitted
+                saveToCSV(name, email); // Save to CSV
+                document.getElementById('lightbox').style.display = 'none'; // Hide lightbox
+                document.getElementById('content').style.display = 'block'; // Show content
+                loadMedia(); // Load media
+            } else {
+                alert("Please fill in both fields.");
+            }
+        };
+
+        // Handle button clicks for GenB TV and Movies
+        document.getElementById('genb-live').onclick = function () {
+            document.getElementById('hls-video').querySelector('source').src = "https://stream.ads.ottera.tv/cl/240930crtb5oej50bu74hqk86g/1920x1080_4787200_4_f.m3u8?i=475_10858";
+            document.getElementById('hls-video').load(); // Load new source
+            document.getElementById('hls-video').play(); // Auto-play
+        };
+
+  document.getElementById('genb-movies').onclick = function () {
+    const hlsUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal";
+    if (Hls.isSupported()) {
+        const video = document.getElementById('video');
+        const hls = new Hls();
+        hls.loadSource(hlsUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play(); // Autoplay the video
+        });
+
+        hls.on(Hls.Events.ERROR, function (event, data) {
+            if (data.fatal) {
+                switch (data.fatal) {
+                    case Hls.ErrorTypes.NETWORK_ERROR:
+                        console.error('A network error occurred: ', data);
+                        break;
+                    case Hls.ErrorTypes.MEDIA_ERROR:
+                        console.error('Media error occurred: ', data);
+                        break;
+                    case Hls.ErrorTypes.OTHER_ERROR:
+                        console.error('An unknown error occurred: ', data);
+                        break;
+                }
+            }
+        });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = hlsUrl;
+        video.addEventListener('loadedmetadata', function () {
+            video.play(); // Autoplay for Safari
+        });
+    } else {
+        alert('Your browser does not support HLS streaming.');
+    }
+};
+
+    </script>
+
+</body>
+
+</html>
