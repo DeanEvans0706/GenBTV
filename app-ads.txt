@@ -1,0 +1,26 @@
+pubmatic.com, 164407 RESELLER, 5d62403b186f2ace
+teads.tv, 22625, DIRECT, 15a9c44f6d26cbe1
+showheroes.com, 7327, DIRECT
+xandr.com, 8833, RESELLER
+telaria.com,l2qly-o8w5q,RESELLER,1a4e959a1b50034a
+tremorhub.com,l2qly-o8w5q,RESELLER,1a4e959a1b50034a
+pubmatic.com, 156695, RESELLER
+freewheel.tv, 1581799, RESELLER
+freewheel.tv, 1581801, RESELLER
+google.com, pub-9829476400767085, RESELLER, f08c47fec0942fa0
+smartadserver.com, 3668, RESELLER
+onetag.com,38980b46b0,RESELLER
+improvedigital.com,1895,RESELLER
+lijit.com, 215294, RESELLER, fafdf38b16bf6b2b
+richaudience.com,Ua8BIWjxkR,RESELLER
+xandr.com, 15325, RESELLER
+telaria.com,n9m2k-onlfr,RESELLER,1a4e959a1b50034a
+tremorhub.com,n9m2k-onlfr,RESELLER,1a4e959a1b50034a
+appnexus.com, 15816, RESELLER, f5ab79cb980f11d1
+freewheel.tv, 1183903, RESELLER
+freewheel.tv, 1184159, RESELLER
+xandr.com, 15870, RESELLER
+badiversitynetwork.com, 118393, DIRECT
+badiversitynetwork.com, 118393, RESELLER
+badiversitynetwork.com, 260376, DIRECT
+badiversitynetwork.com, 260376, RESELLER
