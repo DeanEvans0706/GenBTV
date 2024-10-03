@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>They Walked So We Could Run</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Horizon', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Section Styles */
+        .section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Images should sit on top of the event backgrounds */
+        .section img.names {
+            position: absolute;
+            top: 50%; /* Adjust the vertical position here */
+            left: 80%; /* Adjust the horizontal position here */
+            transform: translate(-50%, -50%);
+            width: 35%; /* Resize Names images here */
+        }
+
+        /* Event Image 1 */
+        #event1 {
+            background-image: url('EventImage1.jpg');
+        }
+
+        /* Event Image 2 */
+        #event2 {
+            background-image: url('EventImage2.jpg');
+        }
+
+        /* Event Image 3 */
+        #event3 {
+            background-image: url('EventImage3.jpg');
+        }
+
+        /* Button Style */
+        .watch-button {
+            position: fixed;
+            top: 0; /* Move to the top */
+            left: 0; /* Move to the left */
+            background-color: black;
+            color: white;
+            padding: 30px 60px; /* Increase size */
+            border: none;
+            font-size: 40px; /* Increase font size */
+            font-family: 'Horizon', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .section img.names {
+                width: 60%; /* Resize for mobile here */
+                top: 50%; /* Adjust vertical position for mobile here */
+                left: 50%; /* Adjust horizontal position for mobile here */
+            }
+            .watch-button {
+                font-size: 32px; /* Adjust font size for mobile */
+                padding: 20px 40px; /* Adjust padding for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Section 1 with EventImage1 and Names1 -->
+        <section id="event1" class="section">
+            <img src="Names1.jpg" alt="Names1 Image" class="names">
+        </section>
+
+        <!-- Section 2 with EventImage2 and Names2 -->
+        <section id="event2" class="section">
+            <img src="Names2.jpg" alt="Names2 Image" class="names">
+        </section>
+
+        <!-- Section 3 with EventImage3 and Names3 -->
+        <section id="event3" class="section">
+            <img src="Names3.jpg" alt="Names3 Image" class="names">
+        </section>
+    </div>
+
+    <!-- Button -->
+    <a href="main.html" class="watch-button">WATCH GenB TV</a>
+
+</body>
+</html>
