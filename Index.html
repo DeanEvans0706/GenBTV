@@ -22,7 +22,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            position: relative; /* Added position relative to the body for button positioning */
+            position: relative;
         }
 
         .container {
@@ -40,23 +40,23 @@
             color: white;
             z-index: 2;
             width: 100%;
-            top: 40%; /* Move the entire text container up or down */
-            transform: translateY(-50%); /* Centers the text vertically */
+            top: 40%;
+            transform: translateY(-50%);
             pointer-events: none;
         }
 
         .pioneer-container {
-            position: absolute; /* Allow moving both the box and text together */
-            top: 130%; /* Adjust this value to move both elements up or down */
+            position: absolute;
+            top: 130%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Centers the container */
-            z-index: 1; /* Ensure the box is behind the text */
+            transform: translate(-50%, -50%);
+            z-index: 1;
         }
 
         .black-box {
-            background-color: rgba(0, 0, 0, 0.4); /* Black with 40% opacity */
-            padding: 10px 20px; /* Add some padding around the text */
-            border-radius: 5px; /* Optional: rounded corners */
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px 20px;
+            border-radius: 5px;
         }
 
         h1, h2, .pioneer-text {
@@ -64,24 +64,21 @@
             white-space: nowrap;
         }
 
-        /* You can change the size of the Pioneers text here */
         .pioneer-text {
-            font-family: 'Anton', sans-serif;  /* Changed to Anton font */
-            font-size: 8.5vw;  /* Change size for the PIONEERS OF THE SCREEN text */
+            font-family: 'Anton', sans-serif;
+            font-size: 8.5vw;
             color: #ed0776;
         }
 
-        /* You can change the size of h1 here */
         h1 {
-            font-family: 'Horizon', sans-serif;  /* Changed to Horizon font */
-            font-size: 8vw;  /* Change size for THEY WALKED text */
+            font-family: 'Horizon', sans-serif;
+            font-size: 8vw;
         }
 
-        /* You can change the size of h2 here */
         h2 {
-            font-family: 'Anton', sans-serif;  /* Changed to Anton font */
-            font-size: 13.5vw;  /* Change size for SO WE COULD RUN text */
-            margin-top: -100px;  /* Create space between h1 and h2 */
+            font-family: 'Anton', sans-serif;
+            font-size: 13.5vw;
+            margin-top: -100px;
         }
 
         .video-container {
@@ -95,7 +92,7 @@
         }
 
         .video-wrapper {
-            width: 33.33%;  /* Each video takes up one-third of the viewport width */
+            width: 33.33%;
             height: 100%;
         }
 
@@ -109,94 +106,36 @@
         /* Button Styles */
         .find-out-more {
             position: absolute;
-            bottom: 20px; /* Distance from the bottom */
-            right: 20px; /* Distance from the right */
-            background-color: black; /* Button background color */
-            color: white; /* Button text color */
-            font-family: 'Anton', sans-serif; /* Font for the button */
-            font-size: 2rem; /* You can adjust the font size here */
-            padding: 10px 20px; /* Padding for the button */
-            border: none; /* Remove default border */
-            border-radius: 5px; /* Optional: rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
-            z-index: 3; /* Ensure button is on top of other elements */
-            text-decoration: none; /* Remove underline from link */
-            text-align: center; /* Center the text */
-        }
-
-        /* Lightbox styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 10; /* Ensure it's on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-        }
-
-        .modal-content {
-            background-color: #202020;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
+            bottom: 20px;
+            right: 20px;
+            background-color: black;
             color: white;
-            text-align: center; /* Center the text */
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #ed0776;
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 3;
             text-decoration: none;
-            cursor: pointer;
-        }
-
-        input {
-            margin-bottom: 10px;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-        }
-
-        button.submit {
-            padding: 10px 15px;
-            background-color: #ed0776;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 4px;
         }
 
         /* Responsive adjustments for smaller screens */
         @media(max-width: 1024px) {
             h1 {
-                font-size: 8vw; /* Adjust font size for THEY WALKED on tablets */
+                font-size: 8vw;
             }
 
             h2 {
-                font-size: 6vw; /* Adjust font size for SO WE COULD RUN on tablets */
+                font-size: 6vw;
             }
 
-            /* Adjust the pioneer-text font size on medium screens */
             .pioneer-text {
-                font-size: 4vw; /* Adjust font size for the pioneer text on tablets */
+                font-size: 4vw;
             }
 
-            /* Adjust the button font size on medium screens */
             .find-out-more {
-                font-size: 1.5rem; /* Adjust button font size on tablets */
+                font-size: 1.5rem;
             }
         }
 
@@ -207,31 +146,28 @@
 
             .video-wrapper {
                 width: 100%;
-                height: 33.33%; /* Videos now stack vertically and take one-third of the height */
+                height: 33.33%;
             }
 
-            /* Remove the h1 and h2 for mobile layout */
             h1, h2 {
-                display: none; /* Hide text on mobile */
+                display: none;
             }
 
-            /* Adjust the pioneer container to be centered on mobile layout */
             .pioneer-container {
-                position: absolute; /* Allow moving both the box and text together */
-                top: 50%; /* Center vertically */
+                position: absolute;
+                top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%); /* Centers the container */
-                z-index: 1; /* Ensure the box is behind the text */
+                transform: translate(-50%, -50%);
+                z-index: 1;
             }
 
             .pioneer-text {
-                font-size: 10vw; /* Make it fit the full width of the screen */
-                text-align: center; /* Center the text */
+                font-size: 10vw;
+                text-align: center;
             }
 
-            /* Adjust the button font size on smaller screens */
             .find-out-more {
-                font-size: 1.2rem; /* Adjust button font size on mobile */
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -276,8 +212,6 @@
         <a href="main.html" class="find-out-more">FIND OUT MORE</a>
     </div>
 
-    <!-- Lightbox Modal (removed as it's no longer needed) -->
-    
     <script>
         // Removed modal JavaScript as it is no longer necessary
     </script>
