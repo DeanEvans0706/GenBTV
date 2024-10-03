@@ -1,0 +1,28 @@
+name: Deploy to Cloudways
+
+on:
+  push:
+    branches:
+      - main  # Triggers deployment on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the latest code
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Setup SSH agent
+    - name: Setup SSH agent
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  # Add your private SSH key in GitHub Secrets
+
+    # Step 3: Sync files to Cloudways via SSH
+    - name: Deploy files to Cloudways server
+      run: |
+        rsync -avz --delete \
+        -e 'ssh -o StrictHostKeyChecking=no' \
+        ./ <cloudways-username>@<cloudways-server-ip>:/home/<cloudways-username>/applications/<application-folder>/public_html
