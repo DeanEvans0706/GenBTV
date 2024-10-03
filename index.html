@@ -91,16 +91,14 @@
             overflow: hidden;
         }
 
-        .video-wrapper {
-            width: 33.33%;
-            height: 100%;
-        }
-
         video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            z-index: 1;
         }
 
         /* Button Styles */
@@ -140,15 +138,6 @@
         }
 
         @media(max-width: 768px) {
-            .video-container {
-                flex-direction: column;
-            }
-
-            .video-wrapper {
-                width: 100%;
-                height: 33.33%;
-            }
-
             h1, h2 {
                 display: none;
             }
@@ -186,26 +175,12 @@
             </div>
         </div>
 
-        <!-- Video Section -->
+        <!-- Video Background -->
         <div class="video-container">
-            <div class="video-wrapper">
-                <video autoplay muted loop>
-                    <source src="Video1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="video-wrapper">
-                <video autoplay muted loop>
-                    <source src="video2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="video-wrapper">
-                <video autoplay muted loop>
-                    <source src="Video3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+            <video autoplay muted loop>
+                <source src="MainVideo1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
         <!-- Button -->
