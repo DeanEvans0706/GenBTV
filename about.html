@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - GenB TV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400;700&family=Glacial+Indifference&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Basic Reset */
         * {
@@ -14,8 +14,12 @@
             box-sizing: border-box;
         }
 
+        /* Apply Horizon font to everything */
+        body, h2, nav ul li a, button, p, .title, .details {
+            font-family: 'Horizon', sans-serif;
+        }
+
         body {
-            font-family: 'Glacial Indifference', sans-serif; /* Changed to Glacial Indifference */
             background-color: #000;
             color: #fff;
             overflow-x: hidden;
@@ -69,7 +73,6 @@
 
         h2 {
             margin: 20px 0;
-            font-family: 'Horizon', sans-serif; /* Title font remains Horizon */
             color: #ed0776;
             text-align: center;
         }
@@ -112,7 +115,6 @@
         }
 
         .title {
-            font-family: 'Helvetica', sans-serif;
             font-weight: bold;
             font-size: 16px;
             color: #fff;
@@ -120,7 +122,6 @@
         }
 
         .details {
-            font-family: 'Helvetica', sans-serif;
             font-size: 12px;
             color: #fff;
             margin: 5px 0 0;
@@ -137,6 +138,21 @@
             height: 60px;
             margin: 0 10px;
             transition: transform 0.3s;
+        }
+
+        /* Button styles (if any) */
+        button {
+            background-color: #ed0776;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Horizon', sans-serif;
+        }
+
+        button:hover {
+            background-color: #fff;
+            color: #ed0776;
         }
     </style>
 </head>
@@ -162,7 +178,7 @@
 
     <div class="container">
         <h2>About GenB TV</h2>
-        <p>Generation Black TV aka GenB TV & GenB Movies are the UK's only Black British Channels.  Broadcasting 24hrs per day, bringing the best in Black British TV, Entertainment, Film, Music, Sport and Lifestye programming.</p>
+        <p>Generation Black TV aka GenB TV & GenB Movies are the UK's only Black British Channels.  Broadcasting 24hrs per day, bringing the best in Black British TV, Entertainment, Film, Music, Sport and Lifestyle programming.</p>
         
         <h2>Our Mission</h2>
         <p>Our mission is to deliver compelling content that resonates with our audience. We strive to push the boundaries of storytelling through innovative programming.</p>
@@ -170,53 +186,51 @@
         <h2>Our Team</h2>
         <div class="grid-container">
             <div class="grid-item">
-                <img src="assets/team_member1.jpg" alt="Team Member 1"> <!-- Link to Team Member 1 Image -->
+                <img src="assets/team_member1.jpg" alt="Team Member 1">
                 <div class="info-box">
                     <p class="title">Team Member 1</p>
                     <p class="details">Role and short bio.</p>
                 </div>
             </div>
             <div class="grid-item">
-                <img src="assets/team_member2.jpg" alt="Team Member 2"> <!-- Link to Team Member 2 Image -->
+                <img src="assets/team_member2.jpg" alt="Team Member 2">
                 <div class="info-box">
                     <p class="title">Team Member 2</p>
                     <p class="details">Role and short bio.</p>
                 </div>
             </div>
             <div class="grid-item">
-                <img src="assets/team_member3.jpg" alt="Team Member 3"> <!-- Link to Team Member 3 Image -->
+                <img src="assets/team_member3.jpg" alt="Team Member 3">
                 <div class="info-box">
                     <p class="title">Team Member 3</p>
                     <p class="details">Role and short bio.</p>
                 </div>
             </div>
-            <!-- Add more team members as needed -->
         </div>
 
         <h2>Our Content</h2>
         <div class="grid-container">
             <div class="grid-item">
-                <img src="assets/content1.jpg" alt="Content 1"> <!-- Link to Content 1 Image -->
+                <img src="assets/content1.jpg" alt="Content 1">
                 <div class="info-box">
                     <p class="title">Content Title 1</p>
                     <p class="details">Description of Content 1.</p>
                 </div>
             </div>
             <div class="grid-item">
-                <img src="assets/content2.jpg" alt="Content 2"> <!-- Link to Content 2 Image -->
+                <img src="assets/content2.jpg" alt="Content 2">
                 <div class="info-box">
                     <p class="title">Content Title 2</p>
                     <p class="details">Description of Content 2.</p>
                 </div>
             </div>
             <div class="grid-item">
-                <img src="assets/content3.jpg" alt="Content 3"> <!-- Link to Content 3 Image -->
+                <img src="assets/content3.jpg" alt="Content 3">
                 <div class="info-box">
                     <p class="title">Content Title 3</p>
                     <p class="details">Description of Content 3.</p>
                 </div>
             </div>
-            <!-- Add more content items as needed -->
         </div>
     </div>
 
@@ -225,9 +239,9 @@
             <a href="#"><img src="assets/roku-CvHPq_Zg.svg" class="footer-image" alt="Footer Image 1"></a>
             <a href="#"><img src="assets/android_tv-BqXq-qO-.svg" class="footer-image" alt="Footer Image 2"></a>
             <a href="#"><img src="assets/samsung_tv-DKglO2fy%20(1).svg" class="footer-image" alt="Footer Image 3"></a>
-            <a href="#"><img src="assets/apple-DaqcImJZ.svg" class="footer-image" alt="Footer Image 1"></a>
-            <a href="#"><img src="assets/lg_tv-C08nVWWG.svg" class="footer-image" alt="Footer Image 2"></a>
-            <a href="#"><img src="assets/apple_tv-B73yrhVR.svg" class="footer-image" alt="Footer Image 3"></a>
+            <a href="#"><img src="assets/apple-DaqcImJZ.svg" class="footer-image" alt="Footer Image 4"></a>
+            <a href="#"><img src="assets/lg_tv-C08nVWWG.svg" class="footer-image" alt="Footer Image 5"></a>
+            <a href="#"><img src="assets/apple_tv-B73yrhVR.svg" class="footer-image" alt="Footer Image 6"></a>
         </div>
         <p>&copy; 2024 GenB TV. All rights reserved.</p>
     </footer>
