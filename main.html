@@ -325,8 +325,6 @@ h2 {
 
     // Initial load with GenB TV feed
     loadHLS(genBTVUrl);
-
-
     document.getElementById('genb-movies').onclick = function () {
         loadHLS(genBMoviesUrl); // Load GenB Movies feed
     };
@@ -449,15 +447,15 @@ h2 {
             return localStorage.getItem('userSubmitted') === 'true';
         }
 
-        function saveToCSV(name, email) {
-            const csvContent = data:text/csv;charset=utf-8,Name,Email\n${name},${email};
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "user_data.csv");
-            document.body.appendChild(link); // Required for FF
-            link.click();
-        }
+ function saveToCSV(name, email) {
+    const csvContent = `data:text/csv;charset=utf-8,Name,Email\n${name},${email}`;
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "user_data.csv");
+    document.body.appendChild(link); // Required for FF
+    link.click();
+}
 
         // Function to dynamically load TV shows and movies
         function loadMedia() {
