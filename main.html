@@ -502,19 +502,15 @@ h2 {
         };
 
         // Handle form submission
-        document.getElementById('submit').onclick = function () {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            if (name && email) {
-                localStorage.setItem('userSubmitted', 'true'); // Mark user as submitted
-                saveToCSV(name, email); // Save to CSV
-                document.getElementById('lightbox').style.display = 'none'; // Hide lightbox
-                document.getElementById('content').style.display = 'block'; // Show content
-                loadMedia(); // Load media
-            } else {
-                alert("Please fill in both fields.");
-            }
-        };
+   <form action="https://genb-lightbox-collection.workers.dev" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <button type="submit">Submit</button>
+</form>
 
         // Handle button clicks for GenB TV and Movies
         document.getElementById('genb-live').onclick = function () {
