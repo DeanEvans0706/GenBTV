@@ -540,10 +540,9 @@ async function saveToCloudflare(name, email) {
         // Show lightbox if user hasn't submitted details
         window.onload = function () {
             if (!checkSubmission()) {
-                document.getElementById('lightbox').style.display = 'flex'; // Show lightbox
-            } else {
-                document.getElementById('content').style.display = 'block'; // Show content
-                loadMedia();
+document.getElementById('lightbox').style.display = 'none'; // Hide lightbox
+document.getElementById('content').style.display = 'block'; // Show content
+loadMedia(); // Load TV shows and movies after submission
             }
         };
 
