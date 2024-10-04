@@ -431,15 +431,25 @@ h2 {
             return localStorage.getItem('userSubmitted') === 'true';
         }
 
-        function saveToCSV(name, email) {
-            const csvContent = `data:text/csv;charset=utf-8,Name,Email\n${name},${email}`;
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "user_data.csv");
-            document.body.appendChild(link); // Required for FF
-            link.click();
+async function saveToCloudflare(name, email) {
+    try {
+        const response = await fetch('https://genb-lightbox-collection.anandha-narayanan.workers.dev/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email })
+        });
+        if (response.ok) {
+            console.log('Data saved successfully');
+        } else {
+            console.error('Failed to save data', response.status);
         }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 
         // Function to dynamically load TV shows and movies
         function loadMedia() {
@@ -504,19 +514,20 @@ h2 {
         };
 
         // Handle form submission
-        document.getElementById('submit').onclick = function () {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            if (name && email) {
-                localStorage.setItem('userSubmitted', 'true'); // Mark user as submitted
-                saveToCSV(name, email); // Save to CSV
-                document.getElementById('lightbox').style.display = 'none'; // Hide lightbox
-                document.getElementById('content').style.display = 'block'; // Show content
-                loadMedia(); // Load media
-            } else {
-                alert("Please fill in both fields.");
-            }
-        };
+    document.getElementById('submit').onclick = function () {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    if (name && email) {
+        localStorage.setItem('userSubmitted', 'true'); // Mark user as submitted
+        saveToCloudflare(name, email); // Save to Cloudflare
+        document.getElementById('lightbox').style.display = 'none'; // Hide lightbox
+        document.getElementById('content').style.display = 'block'; // Show content
+        loadMedia(); // Load media
+    } else {
+        alert("Please fill in both fields.");
+    }
+};
+
 
         // Handle button clicks for GenB TV and Movies
         document.getElementById('genb-live').onclick = function () {
