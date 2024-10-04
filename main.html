@@ -22,20 +22,12 @@
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
          
+/* Mobile Menu Font Style */
 @media (max-width: 768px) {
-    body {
-        font-family: 'Horizon', sans-serif; /* Apply Horizon font on mobile */
-    }
-
     nav ul li a {
-        font-family: 'Horizon', sans-serif; /* Ensure navigation links use Horizon font */
-    }
-
-    h2 {
-        font-family: 'Horizon', sans-serif; /* Apply Horizon font to headings */
+        font-family: 'Horizon', sans-serif; /* Apply Horizon font */
     }
 }
-
 
         header {
             background-color: #202020;
@@ -540,9 +532,10 @@ async function saveToCloudflare(name, email) {
         // Show lightbox if user hasn't submitted details
         window.onload = function () {
             if (!checkSubmission()) {
-document.getElementById('lightbox').style.display = 'none'; // Hide lightbox
-document.getElementById('content').style.display = 'block'; // Show content
-loadMedia(); // Load TV shows and movies after submission
+                document.getElementById('lightbox').style.display = 'flex'; // Show lightbox
+            } else {
+                document.getElementById('content').style.display = 'block'; // Show content
+                loadMedia();
             }
         };
 
