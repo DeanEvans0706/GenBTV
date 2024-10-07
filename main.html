@@ -312,7 +312,7 @@ h2 {
     const hls = new Hls();
 
     // HLS feed URLs
-    const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal";
+    const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
     const genBMoviesUrl = "https://stream.ads.ottera.tv/cl/241002crukc5ks533qrthgsikg/1280x720_3115200_0_f.m3u8?i=475_11954";
     
     // Function to load HLS feed
