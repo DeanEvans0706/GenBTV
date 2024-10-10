@@ -4,7 +4,7 @@
 <head>
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generation Black TV</title>
+    <title>Your TV Channel</title>
     <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
@@ -366,12 +366,6 @@ h2 {
             <button id="genb-movies" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer; margin-left: 10px;">GenB Movies</button>
         </div>
 
-      <!-- Black History Month -->
-        <section>
-            <h2>Black History Month</h2>
-            <div class="grid-container" id="BHM"></div>
-        </section>
-
         <!-- Top TV Shows -->
         <section>
             <h2>Top TV Shows</h2>
@@ -483,20 +477,6 @@ async function saveToCloudflare(name, email) {
 
         // Function to dynamically load TV shows and movies
         function loadMedia() {
-
-          const BHM = [
-                { title: "Dance Battle America", year: "2023", duration: "116 min", image: "Top 10 Movies/Dance Battle America.jpg" },
-                { title: "hear me move", year: "2021", duration: "97 min", image: "Top 10 Movies/hear me move.jpg" },
-                { title: "His Sickled Journey", year: "2020", duration: "51 min", image: "Top 10 Movies/His Sickled Journey.jpg" },
-                { title: "Knuckle City", year: "2019", duration: "119 min", image: "Top 10 Movies/Knuckle City.jpg" },
-                { title: "Letters of Hope", year: "2021", duration: "75 min", image: "Top 10 Movies/Letters of Hope.jpg" },
-                { title: "Light in the Dark", year: "2020", duration: "104 min", image: "Top 10 Movies/Light in the Dark.jpg" },
-                { title: "Paradise Stop", year: "2020", duration: "89 min", image: "Top 10 Movies/Paradise Stop.jpg" },
-                { title: "Assignment", year: "2020", duration: "92 min", image: "Top 10 Movies/Assignment.png" },
-               { title: "One Crazy Christmas", year: "2020", duration: "85 min", image: "Top 10 Movies/One Crazy Christmas.jpg" },
-                { title: "Wonderboy For President", year: "2020", duration: "87 min", image: "Top 10 Movies/Wonderboy for President Poster TUBI.jpg" },
-            ];
-             
             const shows = [
                 { title: "Blood Sweat and Tears", year: "2023", duration: "38 min", image: "Top 10 Documentary/Blood Sweat And Tears.jpg" },
                 { title: "From Gangs to Glory", year: "2022", duration: "29 min", image: "Top 10 Documentary/From Gangs to Glory.jpg" },
@@ -523,22 +503,9 @@ async function saveToCloudflare(name, email) {
                 { title: "Wonderboy For President", year: "2020", duration: "87 min", image: "Top 10 Movies/Wonderboy for President Poster TUBI.jpg" },
             ];
 
-            const BHMContainer = document.getElementById('BHM');
             const tvShowsContainer = document.getElementById('tv-shows');
             const moviesContainer = document.getElementById('top-movies');
 
-          BHM.forEach(show => {
-                const showDiv = document.createElement('div');
-                BHMDiv.className = 'grid-item';
-                BHMDiv.innerHTML = `
-                    <img src="${BHM.image}" alt="${BHM.title}">
-                    <div class="info-box">
-                        <p class="title">${BHM.title}</p>
-                        <p class="details">${BHM.year} • ${BHM.duration}</p>
-                    </div>`;
-                BHMContainer.appendChild(showDiv);
-            });
-             
             shows.forEach(show => {
                 const showDiv = document.createElement('div');
                 showDiv.className = 'grid-item';
