@@ -4,7 +4,7 @@
 <head>
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your TV Channel</title>
+    <title>Generation Black TV</title>
     <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
@@ -365,6 +365,12 @@ h2 {
             <button id="genb-live" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer;">GenB TV Live</button>
             <button id="genb-movies" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer; margin-left: 10px;">GenB Movies</button>
         </div>
+        
+           <!-- BHM Shows -->
+        <section>
+            <h2>Black History Month</h2>
+            <div class="grid-container" id="bhm"></div>
+        </section>
 
         <!-- Top TV Shows -->
         <section>
@@ -475,8 +481,14 @@ async function saveToCloudflare(name, email) {
 }
 
 
-        // Function to dynamically load TV shows and movies
+        // Function to dynamically load BHM content, TV shows and movies
         function loadMedia() {
+              const bhm = [
+                { title: "Brothers & Fathers", year: "2023", duration: "45 min", image: "BHM Content/BROTHERS_&_FATHERS_Poster_Lanscape.png" },
+                { title: "Sticks of Fury", year: "2022", duration: "50 min", image: "BHM Content/Sticks of Fury Poster 2.jpg" },
+                { title: "Wireless", year: "2021", duration: "60 min", image: "BHM Content/Wireless_TitleCard l24.jpg" }
+            ];
+            
             const shows = [
                 { title: "Blood Sweat and Tears", year: "2023", duration: "38 min", image: "Top 10 Documentary/Blood Sweat And Tears.jpg" },
                 { title: "From Gangs to Glory", year: "2022", duration: "29 min", image: "Top 10 Documentary/From Gangs to Glory.jpg" },
@@ -503,9 +515,22 @@ async function saveToCloudflare(name, email) {
                 { title: "Wonderboy For President", year: "2020", duration: "87 min", image: "Top 10 Movies/Wonderboy for President Poster TUBI.jpg" },
             ];
 
+            const bhmContainer = document.getElementById("bhm");
             const tvShowsContainer = document.getElementById('tv-shows');
             const moviesContainer = document.getElementById('top-movies');
 
+                 bhm.forEach(bhm => {
+                const bhmDiv = document.createElement('div');
+                bhmDiv.className = 'grid-item';
+                bhmDiv.innerHTML = `
+                    <img src="${bhm.image}" alt="${bhm.title}">
+                    <div class="info-box">
+                        <p class="title">${bhm.title}</p>
+                        <p class="details">${bhm.year} • ${bhm.duration}</p>
+                    </div>`;
+                bhmContainer.appendChild(bhmDiv);
+            });
+            
             shows.forEach(show => {
                 const showDiv = document.createElement('div');
                 showDiv.className = 'grid-item';
