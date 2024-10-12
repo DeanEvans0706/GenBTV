@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generation Black TV</title>
     <link href="https://fonts.googleapis.com/css2?family=Horizon:wght@400;700&display=swap" rel="stylesheet">
@@ -21,13 +21,6 @@
             color: #fff;
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
-         
-/* Mobile Menu Font Style */
-@media (max-width: 768px) {
-    nav ul li a {
-        font-family: 'Horizon', sans-serif; /* Apply Horizon font */
-    }
-}
 
         header {
             background-color: #202020;
@@ -43,29 +36,14 @@
             width: auto;
         }
 
-         /* Add this to your existing CSS */
-
-nav {
-    margin-left: auto; /* Aligns nav to the right */
-}
-
-nav ul {
-    display: flex;
-    justify-content: flex-end; /* Aligns menu items to the right */
-}
-
-/* Mobile Menu Font Style */
-@media (max-width: 768px) {
-    nav ul li a {
-        font-family: 'Horizon', sans-serif; /* Apply Horizon font */
-    }
-}
-
+        nav {
+            margin-left: auto; /* Aligns nav to the right */
+        }
 
         nav ul {
             list-style: none;
             display: flex;
-            flex-wrap: wrap;
+            justify-content: flex-end; /* Aligns menu items to the right */
         }
 
         nav ul li {
@@ -83,12 +61,12 @@ nav ul {
             color: #ed0776;
         }
 
-   .video-container {
-    width: 100%;
-    height: 60vh;
-    position: relative;
-    margin-top: 10px; /* Reduce the space between the header and the video */
-}
+        .video-container {
+            width: 100%;
+            height: 60vh;
+            position: relative;
+            margin-top: 10px; /* Reduce space between the header and the video */
+        }
 
         video {
             width: 100%;
@@ -101,15 +79,16 @@ nav ul {
             text-align: center;
         }
 
- .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 0; /* Reduce padding around the buttons */
-    display: none;
-}
-         .container div {
-    margin-top: 10px; /* Reduce the space between the video and the buttons */
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 0; /* Reduce padding around the buttons */
+        }
+
+        .container div {
+            text-align: center;
+            margin-top: 20px; /* Reduce space between the video and the buttons */
+        }
 
         .grid-container {
             display: grid;
@@ -156,11 +135,6 @@ nav ul {
             margin: 5px 0 0;
         }
 
-.footer-image:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-}
-        
-          /* Footer styles */
         footer {
             background-color: #202020;
             padding: 20px 0;
@@ -216,12 +190,12 @@ nav ul {
         }
 
         /* Slider styles */
-   .slider {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100%; /* Ensure it takes up the full slider height */
-}
+        .slider {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100%; /* Ensure it takes up the full slider height */
+        }
 
         .slider-content {
             display: flex;
@@ -236,13 +210,12 @@ nav ul {
             margin: 20px 0;
         }
 
-     .originals-item img {
-    max-width: 80%; /* Decrease this percentage to reduce the image size */
-    height: auto; /* Ensure the aspect ratio is maintained */
-    margin: 0 auto; /* Center the image horizontally */
-    display: block; /* Make sure the image is treated as a block-level element */
-}
-
+        .originals-item img {
+            max-width: 80%; /* Decrease this percentage to reduce the image size */
+            height: auto; /* Ensure the aspect ratio is maintained */
+            margin: 0 auto; /* Center the image horizontally */
+            display: block; /* Make sure the image is treated as a block-level element */
+        }
 
         .title-overlay {
             position: absolute;
@@ -285,12 +258,10 @@ nav ul {
             .info-box {
                 font-size: 14px;
             }
-            
-            
 
-h2 {
-    margin-top: 100px; /* Adjust this value for more or less space */
-    /* other existing styles */
+            h2 {
+                margin-top: 100px; /* Adjust this value for more or less space */
+            }
         }
     </style>
 </head>
@@ -301,94 +272,100 @@ h2 {
         <div class="logo">
             <a href="main.html"><img src="logo.png" alt="Logo"></a>
         </div>
-   
+        <nav>
+            <ul>
+                <!-- Add your navigation items here -->
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-<div class="video-container" id="video-player">
-    <video id="video" controls muted autoplay></video>
-
-<script>
-    const video = document.getElementById('video');
-    let hls = new Hls();
-
-    // HLS feed URLs
-    const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
-    const genBMoviesUrl = "https://ov.ottera.tv/channels/bad_genb/master.m3u8?version=12&id=10&partner=internal&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
-
-    // Function to load HLS feed
-    function loadHLS(url) {
-        if (hls) {
-            hls.destroy(); // Destroy previous instance
-        }
-        
-        hls = new Hls(); // Create a new HLS instance
-
-        if (Hls.isSupported()) {
-            hls.loadSource(url);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                video.play(); // Autoplay the video
-            });
-
-            hls.on(Hls.Events.ERROR, function (event, data) {
-                if (data.fatal) {
-                    switch (data.fatal) {
-                        case Hls.ErrorTypes.NETWORK_ERROR:
-                            console.error('A network error occurred: ', data);
-                            break;
-                        case Hls.ErrorTypes.MEDIA_ERROR:
-                            console.error('Media error occurred: ', data);
-                            break;
-                        case Hls.ErrorTypes.OTHER_ERROR:
-                            console.error('An unknown error occurred: ', data);
-                            break;
-                    }
-                }
-            });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = url;
-            video.addEventListener('loadedmetadata', function () {
-                video.play(); // Autoplay for Safari
-            });
-        } else {
-            alert('Your browser does not support HLS streaming.');
-        }
-    }
-
-    // Initial load with GenB TV feed
-    loadHLS(genBTVUrl);
-
-    document.getElementById('genb-movies').onclick = function () {
-        loadHLS(genBMoviesUrl); // Load GenB Movies feed
-    };
-</script>
-
-</div>
-
+    <div class="video-container" id="video-player">
+        <video id="video" controls muted autoplay></video>
+    </div>
 
     <div class="container" id="content">
-        <div style="text-align: center; margin-top: 20px;">
+        <div>
             <button id="genb-live" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer;">GenB TV Live</button>
             <button id="genb-movies" style="padding: 10px 20px; background-color: #ed0776; border: none; color: #fff; cursor: pointer; margin-left: 10px;">GenB Movies</button>
         </div>
-        
-           <!-- BHM Shows -->
-        <section>
-            <h2>Black History Month Special</h2>
-            <div class="grid-container" id="bhm"></div>
-        </section>
+    </div>
 
-        <!-- Top TV Shows -->
-        <section>
-            <h2>Top TV Shows</h2>
-            <div class="grid-container" id="tv-shows"></div>
-        </section>
+    <section>
+        <h2>Black History Month Special</h2>
+        <div class="grid-container" id="bhm"></div>
+    </section>
 
-        <!-- Top 10 Movies -->
-        <section>
-            <h2>Top Movies</h2>
-            <div class="grid-container" id="top-movies"></div>
-        </section>
+    <section>
+        <h2>Top TV Shows</h2>
+        <div class="grid-container" id="tv-shows"></div>
+    </section>
+
+    <section>
+        <h2>Top Movies</h2>
+        <div class="grid-container" id="top-movies"></div>
+    </section>
+
+    <footer>
+        <p>© 2024 Generation Black TV. All rights reserved.</p>
+        <!-- Add footer links or images here -->
+    </footer>
+
+    <script>
+        const video = document.getElementById('video');
+        let hls = new Hls();
+
+        // HLS feed URLs
+        const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
+        const genBMoviesUrl = "https://ov.ottera.tv/channels/bad_genb/master.m3u8?version=12&id=10&partner=internal&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
+
+        // Function to load HLS feed
+        function loadHLS(url) {
+            if (hls) {
+                hls.destroy(); // Destroy previous instance
+            }
+
+            hls = new Hls(); // Create a new HLS instance
+
+            if (Hls.isSupported()) {
+                hls.loadSource(url);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play(); // Autoplay the video
+                });
+
+                hls.on(Hls.Events.ERROR, function (event, data) {
+                    if (data.fatal) {
+                        console.error('Error occurred:', data);
+                    }
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = url;
+                video.addEventListener('loadedmetadata', function () {
+                    video.play(); // Autoplay for Safari
+                });
+            } else {
+                alert('Your browser does not support HLS streaming.');
+            }
+        }
+
+        // Initial load with GenB TV feed
+        loadHLS(genBTVUrl);
+
+        // Event listeners for buttons
+        document.getElementById('genb-live').onclick = function () {
+            loadHLS(genBTVUrl); // Load GenB TV Live feed
+        };
+
+        document.getElementById('genb-movies').onclick = function () {
+            loadHLS(genBMoviesUrl); // Load GenB Movies feed
+        };
+    </script>
+</body>
+
+</html>
 
         <!-- GenB TV Originals -->
 <section>
