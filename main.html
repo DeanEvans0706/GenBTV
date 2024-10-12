@@ -307,16 +307,22 @@ h2 {
 <div class="video-container" id="video-player">
     <video id="video" controls muted autoplay></video>
 
-   <script>
+<script>
     const video = document.getElementById('video');
-    const hls = new Hls();
+    let hls = new Hls();
 
     // HLS feed URLs
     const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
     const genBMoviesUrl = "https://ov.ottera.tv/channels/bad_genb/master.m3u8?version=12&id=10&partner=internal&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
-    
+
     // Function to load HLS feed
     function loadHLS(url) {
+        if (hls) {
+            hls.destroy(); // Destroy previous instance
+        }
+        
+        hls = new Hls(); // Create a new HLS instance
+
         if (Hls.isSupported()) {
             hls.loadSource(url);
             hls.attachMedia(video);
@@ -352,11 +358,11 @@ h2 {
     // Initial load with GenB TV feed
     loadHLS(genBTVUrl);
 
-
     document.getElementById('genb-movies').onclick = function () {
         loadHLS(genBMoviesUrl); // Load GenB Movies feed
     };
 </script>
+
 </div>
 
 
