@@ -488,6 +488,45 @@ if (isMobile) {
 
 </html>
 
+<div class="ad-container"></div>
+
+<script type="text/javascript">
+var adContainer = document.querySelector('.ad-container');
+var isMobile = window.matchMedia("(max-width: 768px)").matches; // Adjust breakpoint as needed
+
+if (isMobile) {
+    // Mobile Ad - 300x250
+    var rnd = window.rnd || Math.floor(Math.random() * 10e6);
+    var pid758571 = window.pid758571 || rnd;
+    var plc758571 = window.plc758571 || 0;
+    var abkw = window.abkw || '';
+    var absrc = 'https://servedbyadbutler.com/adserve/;ID=186097;size=300x250;setID=758571;type=iframe;sw=' + screen.width + ';sh=' + screen.height + ';spr=' + window.devicePixelRatio + ';kw=' + abkw + ';pid=' + pid758571 + ';place=' + (plc758571++) + ';rnd=' + rnd + '';
+    adContainer.innerHTML = '<iframe src="' + absrc + '" width="300" height="250" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>';
+} else {
+    // Desktop Ad - 728x90
+    var rnd = window.rnd || Math.floor(Math.random() * 10e6);
+    var pid758570 = window.pid758570 || rnd;
+    var plc758570 = window.plc758570 || 0;
+    var abkw = window.abkw || '';
+    var absrc = 'https://servedbyadbutler.com/adserve/;ID=186097;size=728x90;setID=758570;type=iframe;sw=' + screen.width + ';sh=' + screen.height + ';spr=' + window.devicePixelRatio + ';kw=' + abkw + ';pid=' + pid758570 + ';place=' + (plc758570++) + ';rnd=' + rnd + '';
+    adContainer.innerHTML = '<iframe src="' + absrc + '" width="728" height="90" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>';
+}
+</script>
+
+<style>
+.ad-container {
+    display: flex;
+    justify-content: center; /* Centers the iframe horizontally */
+    margin: 20px 0; /* Optional: Add some vertical space */
+}
+
+.ad-container iframe {
+    max-width: 100%; /* Makes the iframe responsive */
+    height: auto; /* Maintains aspect ratio */
+}
+</style>
+
+
         <!-- GenB TV Originals -->
 <section>
     <h2>GenB TV Originals</h2>
