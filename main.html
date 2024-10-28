@@ -314,6 +314,13 @@
    <div class="ad-container"></div>
 
 <script type="text/javascript">
+
+    // Auto-play GenB TV feed on page load
+window.onload = function () {
+    initializeHLS(genBTVUrl);
+    video.play(); // Explicitly trigger play
+};
+    
 var adContainer = document.querySelector('.ad-container');
 var isMobile = window.matchMedia("(max-width: 768px)").matches; // Adjust breakpoint as needed
 
@@ -404,12 +411,6 @@ function initializeHLS(url) {
         }
     });
 }
-
-// Auto-play GenB TV feed on page load
-window.onload = function () {
-    initializeHLS(genBTVUrl);
-    video.play(); // Explicitly trigger play
-};
 
     // Event listeners for buttons to switch between feeds
     document.getElementById('genb-live').onclick = function () {
