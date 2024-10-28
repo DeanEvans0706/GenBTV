@@ -247,6 +247,36 @@
         .arrow.right {
             right: 10px;
         }
+        /* Overlay styles */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    flex-direction: column;
+}
+
+.video-overlay button {
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #ed0776;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.video-overlay button:hover {
+    background-color: #ff2f8a;
+}
+
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -311,9 +341,37 @@
         </div>
     </div>
 
+    <div class="video-overlay" id="video-overlay">
+    <button id="overlay-genb-tv">GenB TV Live</button>
+    <button id="overlay-genb-movies">GenB Movies</button>
+</div>
+
+
    <div class="ad-container"></div>
 
 <script type="text/javascript">
+
+    // Auto-play GenB TV or GenB Movies based on overlay button click
+document.getElementById('overlay-genb-tv').onclick = function () {
+    initializeHLS(genBTVUrl);
+    hideOverlay();
+};
+
+document.getElementById('overlay-genb-movies').onclick = function () {
+    initializeHLS(genBMoviesUrl);
+    hideOverlay();
+};
+
+// Function to hide overlay after selection
+function hideOverlay() {
+    document.getElementById('video-overlay').style.display = 'none';
+}
+
+// Default load GenB TV stream when overlay selection is skipped
+window.onload = function () {
+    initializeHLS(genBTVUrl); // Optional: load default if user doesn't select
+};
+
 
     // Auto-play GenB TV feed on page load
 window.onload = function () {
