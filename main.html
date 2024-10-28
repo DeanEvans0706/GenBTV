@@ -375,73 +375,44 @@ if (isMobile) {
         <!-- Add footer links or images here -->
     </footer>
 
-    <script>
-        const video = document.getElementById('video');
-        let hls = new Hls();
+  <script>
+    const video = document.getElementById('video');
+    let hls = new Hls();
 
-        // HLS feed URLs
-// Define URLs for the HLS streams
-const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=genbtv&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
-const genBMoviesUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=678&partner=genbtv&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR_CONSENT]&partner=internal";
+    // URLs for the HLS streams
+    const genBTVUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=genbtv";
+    const genBMoviesUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=678&partner=genbtv";
 
-const video = document.getElementById('video');
-let hls;
+    // Function to initialize HLS stream
+    function initializeHLS(url) {
+        // Destroy existing HLS instance if any
+        if (hls) {
+            hls.destroy();
+            hls = null;
+        }
 
-// Function to fully reset and load HLS feed
-function loadHLS(url) {
-    // Destroy any existing HLS instance to reset
-    if (hls) {
-        hls.destroy();
-        hls = null; // Ensure hls is null for reinitialization
-    }
-
-    // Reset the video element to clear any cached stream
-    video.pause();
-    video.src = ""; // Clear any previous source
-    video.load(); // Reload the video element
-
-    // Create a new HLS instance
-    hls = new Hls();
-
-    // Attach HLS and load the new source
-    if (Hls.isSupported()) {
+        hls = new Hls();
         hls.loadSource(url);
         hls.attachMedia(video);
-
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play(); // Autoplay the video
+            video.play();
         });
-
-        hls.on(Hls.Events.ERROR, function (event, data) {
-            if (data.fatal) {
-                console.error('Error occurred:', data);
-            }
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // For Safari, which has native HLS support
-        video.src = url;
-        video.addEventListener('loadedmetadata', function () {
-            video.play(); // Autoplay for Safari
-        });
-    } else {
-        alert('Your browser does not support HLS streaming.');
     }
-}
 
-// Initial load with GenB TV feed
-loadHLS(genBTVUrl);
+    // Auto-play GenB TV feed on page load
+    window.onload = function () {
+        initializeHLS(genBTVUrl);
+    };
 
-// Event listeners for buttons
-document.getElementById('genb-live').onclick = function () {
-    loadHLS(genBTVUrl); // Load GenB TV Live feed
-};
+    // Event listeners for buttons to switch between feeds
+    document.getElementById('genb-live').onclick = function () {
+        initializeHLS(genBTVUrl);
+    };
 
-document.getElementById('genb-movies').onclick = function () {
-    loadHLS(genBMoviesUrl); // Load GenB Movies feed
-};
-
-    </script>
-</body>
+    document.getElementById('genb-movies').onclick = function () {
+        initializeHLS(genBMoviesUrl);
+    };
+</script>
 
 </html>
 
@@ -645,25 +616,6 @@ async function saveToCloudflare(name, email) {
         alert("Please fill in both fields.");
     }
 };
-
-
-        // Handle button clicks for GenB TV and Movies
-        document.getElementById('genb-live').onclick = function () {
-            document.getElementById('hls-video').querySelector('source').src = "https://stream.ads.ottera.tv/cl/240930crtb5oej50bu74hqk86g/1920x1080_4787200_4_f.m3u8?i=475_10858";
-            document.getElementById('hls-video').load(); // Load new source
-            document.getElementById('hls-video').play(); // Auto-play
-        };
-
-  document.getElementById('genb-movies').onclick = function () {
-    const hlsUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=10&partner=internal";
-    if (Hls.isSupported()) {
-        const video = document.getElementById('video');
-        const hls = new Hls();
-        hls.loadSource(hlsUrl);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play(); // Autoplay the video
-        });
 
         hls.on(Hls.Events.ERROR, function (event, data) {
             if (data.fatal) {
