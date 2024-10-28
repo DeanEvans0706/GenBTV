@@ -405,10 +405,11 @@ function initializeHLS(url) {
     });
 }
 
-    // Auto-play GenB TV feed on page load
-    window.onload = function () {
-        initializeHLS(genBTVUrl);
-    };
+// Auto-play GenB TV feed on page load
+window.onload = function () {
+    initializeHLS(genBTVUrl);
+    video.play(); // Explicitly trigger play
+};
 
     // Event listeners for buttons to switch between feeds
     document.getElementById('genb-live').onclick = function () {
