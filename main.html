@@ -384,20 +384,26 @@ if (isMobile) {
     const genBMoviesUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=678&partner=genbtv";
 
     // Function to initialize HLS stream
-    function initializeHLS(url) {
-        // Destroy existing HLS instance if any
-        if (hls) {
-            hls.destroy();
-            hls = null;
-        }
-
-        hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
-        });
+function initializeHLS(url) {
+    // Destroy existing HLS instance if any
+    if (hls) {
+        hls.destroy();
+        hls = null;
     }
+
+    hls = new Hls();
+    hls.loadSource(url);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        video.play();
+    });
+
+    hls.on(Hls.Events.ERROR, function (event, data) {
+        if (data.fatal) {
+            console.error('Error occurred:', data);
+        }
+    });
+}
 
     // Auto-play GenB TV feed on page load
     window.onload = function () {
@@ -617,30 +623,6 @@ async function saveToCloudflare(name, email) {
     }
 };
 
-        hls.on(Hls.Events.ERROR, function (event, data) {
-            if (data.fatal) {
-                switch (data.fatal) {
-                    case Hls.ErrorTypes.NETWORK_ERROR:
-                        console.error('A network error occurred: ', data);
-                        break;
-                    case Hls.ErrorTypes.MEDIA_ERROR:
-                        console.error('Media error occurred: ', data);
-                        break;
-                    case Hls.ErrorTypes.OTHER_ERROR:
-                        console.error('An unknown error occurred: ', data);
-                        break;
-                }
-            }
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = hlsUrl;
-        video.addEventListener('loadedmetadata', function () {
-            video.play(); // Autoplay for Safari
-        });
-    } else {
-        alert('Your browser does not support HLS streaming.');
-    }
-};
 
     </script>
 
