@@ -1,5 +1,12 @@
 {
   "sellers": [
+
+                {
+      "seller_id": 7926377,
+      "seller_type": "PUBLISHER",
+      "name": "Adnetplus",
+      "domain": "adnetplus.tv"
+    },
             {
       "seller_id": 311216,
       "seller_type": "PUBLISHER",
