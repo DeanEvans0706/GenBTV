@@ -387,34 +387,37 @@ if (isMobile) {
         const genBMoviesUrl = "https://api-ott.badiversitymedia.com/loggingmediaurlpassthrough/a.m3u8?version=12&id=678&partner=genbtv&app_bundle=[APP_BUNDLE]&app_name=[SITE_NAME]&app_store_url=[APP_STORE_URL]&device_id=[DEVICE_ID]&ifa_type=[IFA_TYPE]&device_width=[SCREEN_WIDTH_IN_PIXELS]&device_height=[SCREEN_HEIGHT_IN_PIXELS]&us_privacy=[US_PRIVACY]&dnt=[DNT]&gdpr=[GDPR]&gdpr_consent=[GDPR_CONSENT]&partner=internal";
 
         // Function to load HLS feed
-        function loadHLS(url) {
-            if (hls) {
-                hls.destroy(); // Destroy previous instance
+function loadHLS(url) {
+    if (hls) {
+        hls.destroy();
+        video.pause();  // Pause video
+        video.src = ""; // Clear the current video source
+        hls = null;     // Set hls to null
+    }
+
+    hls = new Hls(); // Create a new HLS instance
+
+    if (Hls.isSupported()) {
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play(); // Autoplay the video
+        });
+
+        hls.on(Hls.Events.ERROR, function (event, data) {
+            if (data.fatal) {
+                console.error('Error occurred:', data);
             }
-
-            hls = new Hls(); // Create a new HLS instance
-
-            if (Hls.isSupported()) {
-                hls.loadSource(url);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                    video.play(); // Autoplay the video
-                });
-
-                hls.on(Hls.Events.ERROR, function (event, data) {
-                    if (data.fatal) {
-                        console.error('Error occurred:', data);
-                    }
-                });
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = url;
-                video.addEventListener('loadedmetadata', function () {
-                    video.play(); // Autoplay for Safari
-                });
-            } else {
-                alert('Your browser does not support HLS streaming.');
-            }
-        }
+        });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = url;
+        video.addEventListener('loadedmetadata', function () {
+            video.play(); // Autoplay for Safari
+        });
+    } else {
+        alert('Your browser does not support HLS streaming.');
+    }
+}
 
         // Initial load with GenB TV feed
         loadHLS(genBTVUrl);
