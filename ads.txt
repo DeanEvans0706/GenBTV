@@ -96,3 +96,38 @@ adcolony.com, 496220845654deec, RESELLER, 1ad675c9de6b5176
 appads.in, 107606, RESELLER
 rubiconproject.com, 24600, RESELLER, 0bfd66d529a55807
 rubiconproject.com, 17328, RESELLER, 0bfd66d529a55807
+
+#ANIVIEW
+aniview.com, 671131d00a520ac7400d874c, RESELLER, 671131d00a520ac7400d874c
+aniview.com, 671131d00a520ac7400d874c, DIRECT, 78b21b97965ec3f
+aps.amazon.com, 1ad7261b-91ea-4b6f-b9e9-b83522205b75, RESELLER
+google.com, pub-3565385483761681, RESELLER, f08c47fec0942fa0
+didna.io, 22652678936, RESELLER
+richaudience.com, 1ru8dKmJJV, RESELLER
+pubmatic.com, 81564, RESELLER, 5d62403b186f2ace
+pubmatic.com, 156538, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 13510, RESELLER
+google.com, pub-6346866704322274, RESELLER, f08c47fec0942fa0
+lijit.com, 376385, RESELLER, fafdf38b16bf6b2b
+rubiconproject.com, 13918, RESELLER, 0bfd66d529a55807
+google.com, pub-4586415728471297, RESELLER, f08c47fec0942fa0
+playstream.media, 911, RESELLER
+gannett.com, 22652678936, RESELLER
+google.com, pub-5717092533913515, RESELLER, f08c47fec0942fa0"
+pubmatic.com, 160993, RESELLER, 5d62403b186f2ace
+pubmatic.com, 161335, RESELLER, 5d62403b186f2ace
+onetag.com, 57e618150c70d90, RESELLER
+sharethrough.com, UXUWG46h, RESELLER, d53b998a7bd4ecd2
+sharethrough.com, zLsEa05k, RESELLER, d53b998a7bd4ecd2
+themediagrid.com, PRLEZI, RESELLER, 35d5010d7789b49d
+criteo.com, B-068458, RESELLER, 9fac4a4a87c2a44f
+themediagrid.com, 4AJU2M, RESELLER, 35d5010d7789b49d
+google.com, pub-6479999173277695, RESELLER, f08c47fec0942fa0
+hindsightsolutions.net, 22652678936, RESELLER
+media.net, 8CU322PTV, RESELLER
+freewheel.tv, 1164257, RESELLER, 74e8e47458f74754
+freewheel.tv, 1164257-169843, RESELLER, 74e8e47458f74754
+freewheel.tv, 1164257-524565, RESELLER, 74e8e47458f74754
+freewheel.tv, 1164257-524565, RESELLER, 74e8e47458f74754
+freewheel.tv, 1157681, RESELLER, 74e8e47458f74754
+freewheel.tv, 1157665, RESELLER, 74e8e47458f74754
