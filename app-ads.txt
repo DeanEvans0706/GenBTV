@@ -96,3 +96,64 @@ adcolony.com, 496220845654deec, RESELLER, 1ad675c9de6b5176
 appads.in, 107606, RESELLER
 rubiconproject.com, 24600, RESELLER, 0bfd66d529a55807
 rubiconproject.com, 17328, RESELLER, 0bfd66d529a55807
+
+#ANIVIEW
+aniview.com, 671131d00a520ac7400d874c, DIRECT, 78b21b97965ec3f8
+freewheel.tv, 1157969, RESELLER
+freewheel.tv, 1157969-524565, DIRECT
+freewheel.tv, 1157969-169843, DIRECT
+pubmatic.com, 160993, RESELLER, 5d62403b186f2ace
+freewheel.tv, 1165025, RESELLER, 74e8e47458f74754
+freewheel.tv, 1165025-524565, RESELLER, 74e8e47458f74754
+freewheel.tv, 1165025-169843, RESELLER, 74e8e47458f74754
+smartadserver.com, 4255, RESELLER
+smartadserver.com, 4071, RESELLER
+pubmatic.com, 156439, RESELLER, 5d62403b186f2ace
+pubmatic.com, 154037, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 16114, RESELLER, 0bfd66d529a55807
+openx.com, 537149888, RESELLER, 6a698e2ec38604c6
+loopme.com, 5679, RESELLER, 6c8d5f95897a5a3b
+google.com, pub-6346866704322274, RESELLER, f08c47fec0942fa0
+contextweb.com, 562929, DIRECT, 89ff185a4c4e857c
+themediagrid.com, PRLEZI, RESELLER, 35d5010d7789b49d
+openx.com, 557739593, RESELLER, 6a698e2ec38604c6
+openx.com, 540862677, RESELLER, 6a698e2ec38604c6
+sharethrough.com, UXUWG46h, RESELLER, d53b998a7bd4ecd2
+pubmatic.com, 156557, RESELLER
+rubiconproject.com, 18694, RESELLER, 0bfd66d529a55807
+openx.com, 540274407, RESELLER, 6a698e2ec38604c6
+33across.com, 0013300001kQj2HAAS, RESELLER, bbea06d9c4d2853c
+smaato.com, 1100047713, RESELLER, 07bcf65f187117b4
+yahoo.com, 59531, RESELLER, e1a5b5b6e3255540
+smartadserver.com, 4342, RESELLER
+smartadserver.com, 4012, RESELLER
+media.net, 8CUSP0K53, RESELLER
+sovrn.com, 376385, RESELLER, fafdf38b16bf6b2b
+lijit.com, 376385, RESELLER, fafdf38b16bf6b2b
+lijit.com, 376385-eb, RESELLER, fafdf38b16bf6b2b
+gumgum.com, 11645, RESELLER, ffdef49475d318a9
+openx.com, 538959099, RESELLER, 6a698e2ec38604c6
+pubmatic.com, 137711, RESELLER, 5d62403b186f2ace
+pubmatic.com, 156212, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 17960, RESELLER, 0bfd66d529a55807
+onetag.com, 57e618150c70d90, RESELLER
+pubmatic.com, 161593, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 11006, RESELLER, 0bfd66d529a55807
+admixer.net, b81743f7-b474-4c19-8479-8697021abdd2, DIRECT
+video.unrulymedia.com, 827123801, RESELLER
+video.unrulymedia.com, 3350674472, RESELLER
+rhythmone.com, 3350674472, RESELLER, a670c89d4a324e47
+affinity.com, 963, RESELLER
+Adsolut.in, 16565, DIRECT
+playstream.media, 1695, DIRECT
+google.com, pub-4586415728471297, DIRECT, f08c47fec0942fa0
+google.com, pub-4586415728471297, RESELLER, f08c47fec0942fa0
+google.com, pub-8584156348842922, DIRECT, f08c47fec0942fa0
+google.com, pub-8584156348842922, RESELLER, f08c47fec0942fa0
+rubiconproject.com, 24872, RESELLER, 0bfd66d529a55807
+rubiconproject.com, 24874, RESELLER, 0bfd66d529a55807
+rubiconproject.com, 26768, RESELLER, 0bfd66d529a55807
+smartadserver.com, 4164, DIRECT, 060d053dcf45cbf3
+telaria.com,4pco5-ef5so,RESELLER,1a4e959a1b50034a
+tremorhub.com,4pco5-ef5so,RESELLER,1a4e959a1b50034a
+springserve.com, 2112, RESELLER, a24eb641fc82e93d
