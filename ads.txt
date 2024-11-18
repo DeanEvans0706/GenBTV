@@ -34,6 +34,13 @@ rubiconproject.com, 26094, DIRECT, 0bfd66d529a55807
 zetaglobal.net, 790, DIRECT
 ssp.disqus.com, 790, DIRECT
 video.unrulymedia.com, 946176315, RESELLER
+dxkulture.com,33449,DIRECT
+zetaglobal.net, 790, DIRECT
+rubiconproject.com, 26094, DIRECT, 0bfd66d529a55807
+video.unrulymedia.com, 946176315, RESELLER
+adswizz.com, dxkulture, DIRECT
+adswizz.com, 651, DIRECT
+pubmatic.com,164751,RESELLER,5d62403b186f2ace
 
 # ADIPOLO
 adipolo.com, 23085410371, DIRECT
