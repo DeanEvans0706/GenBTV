@@ -7,6 +7,7 @@ xandr.com, 15870, RESELLER
 xandr.com, 15325, RESELLER
 xandr.com, 8833, RESELLER
 xandr.com, 15870, DIRECT
+appnexus.com, 15870, DIRECT, f5ab79cb980f11d1
 
 # TEADS
 teads.tv, 22625, DIRECT, 15a9c44f6d26cbe1
