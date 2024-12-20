@@ -12,6 +12,12 @@ appnexus.com, 15870, DIRECT, f5ab79cb980f11d1
 # TEADS
 teads.tv, 22625, DIRECT, 15a9c44f6d26cbe1
 
+# NEXXEN
+#DIRECT O&O APPS
+video.unrulymedia.com, 336577145, DIRECT
+#NON O&O APPS
+video.unrulymedia.com, 336577145, RESELLER
+
 # SHOWHEROES
 showheroes.com, 7327, DIRECT
 telaria.com, l2qly-o8w5q, RESELLER, 1a4e959a1b50034a
